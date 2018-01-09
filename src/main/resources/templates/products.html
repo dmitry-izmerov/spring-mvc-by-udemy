@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>Spring mvc - Products list</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"
+          th:href="@{/webjars/jquery/3.2.1/jquery.min.js}"></link>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"></link>
+
+    <link rel="stylesheet" href="../static/css/spring-mvc.css"
+          th:href="@{css/spring-mvc.css}"></link>
+</head>
+<body>
+    <div class="container">
+        <div th:if="${not #lists.isEmpty(products)}">
+            <h2>Products list</h2>
+            <table class="table table-striped">
+                <tr>
+                    <th>Id</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Image url</th>
+                </tr>
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.id}"></td>
+                    <td th:text="${product.description}"></td>
+                    <td th:text="${product.price}"></td>
+                    <td th:text="${product.imageUrl}"></td>
+                </tr>
+            </table>
+        </div>
+        <div th:if="${#lists.isEmpty(products)}">
+            <h2>There are no any products.</h2>
+        </div>
+    </div>
+</body>
+</html>
