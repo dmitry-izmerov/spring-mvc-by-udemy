@@ -38,4 +38,10 @@ public class ProductCtrl {
 		productService.saveProduct(product);
 		return "redirect:/products";
 	}
+
+	@RequestMapping("/product/delete/{id}")
+	public String deleteProduct(@PathVariable Integer id) {
+		productService.deleteProduct(id);
+		return "redirect:/products";
+	}
 }
