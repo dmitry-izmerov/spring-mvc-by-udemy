@@ -12,4 +12,8 @@ public class Product {
 	private String description;
 	private BigDecimal price;
 	private String imageUrl;
+
+	public boolean isNew() {
+		return id == null;
+	}
 }

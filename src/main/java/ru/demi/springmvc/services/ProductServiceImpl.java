@@ -5,9 +5,11 @@ import ru.demi.springmvc.models.Product;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -45,5 +47,27 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Product getProductById(Integer id) {
 		return products.get(id);
+	}
+
+	@Override
+	public Product saveProduct(Product product) {
+		if (Objects.isNull(product)) {
+			throw new RuntimeException("Product shouldn't be null.");
+		}
+
+		if (product.isNew()) {
+			int id = getNextId();
+			product.setId(id);
+			products.put(id, product);
+		} else if (products.containsKey(product.getId())) {
+			products.put(product.getId(), product);
+		} else {
+			throw new RuntimeException("Product with passed id doesn't exist.");
+		}
+		return product;
+	}
+
+	private Integer getNextId() {
+		return Collections.max(products.keySet()) + 1;
 	}
 }
