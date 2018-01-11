@@ -18,7 +18,7 @@ public class ProductCtrl {
 	@RequestMapping("/products")
 	public String getAllProducts(Model model) {
 		model.addAttribute("products", productService.getAllProducts());
-		return "products";
+		return "product-list";
 	}
 
 	@RequestMapping("/product/{id}")
@@ -27,7 +27,7 @@ public class ProductCtrl {
 		return "product";
 	}
 
-	@RequestMapping("/product")
+	@RequestMapping("/product/new")
 	public String getEmptyProduct(Model model) {
 		model.addAttribute("product", new Product());
 		return "product";
