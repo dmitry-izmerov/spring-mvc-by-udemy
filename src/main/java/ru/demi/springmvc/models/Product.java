@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Version;
 import java.math.BigDecimal;
 
 @Getter
@@ -25,6 +26,9 @@ public class Product {
 	private String description;
 	private BigDecimal price;
 	private String imageUrl;
+
+	@Version
+	private Integer version;
 
 	public boolean isNew() {
 		return id == null;
