@@ -9,3 +9,5 @@ spring:
   datasource:
     username: sa # it was added for fix generation table for entity
     url: jdbc:h2:~/Desktop/Learning/h2db
+  profiles:
+    active: jpa

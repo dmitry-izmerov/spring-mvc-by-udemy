@@ -1,6 +1,5 @@
 package ru.demi.springmvc.models;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,7 +14,6 @@ import java.math.BigDecimal;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "products")
@@ -29,6 +27,13 @@ public class Product {
 
 	@Version
 	private Integer version;
+
+	public Product(Integer id, String description, BigDecimal price, String imageUrl) {
+		this.id = id;
+		this.description = description;
+		this.price = price;
+		this.imageUrl = imageUrl;
+	}
 
 	public boolean isNew() {
 		return id == null;

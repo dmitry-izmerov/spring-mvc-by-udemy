@@ -1,5 +1,6 @@
 package ru.demi.springmvc.services;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import ru.demi.springmvc.models.Product;
 
@@ -12,6 +13,7 @@ import java.util.Map;
 import java.util.Objects;
 
 @Service
+@Profile("map")
 public class ProductServiceImpl implements ProductService {
 
 	private static final Map<Integer, Product> products = new HashMap<>();
