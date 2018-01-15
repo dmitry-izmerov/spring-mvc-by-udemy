@@ -1,8 +1,9 @@
-package ru.demi.springmvc.services;
+package ru.demi.springmvc.services.map;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import ru.demi.springmvc.models.Product;
+import ru.demi.springmvc.services.ProductService;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
