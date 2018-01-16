@@ -2,9 +2,11 @@ package ru.demi.springmvc.models;
 
 import lombok.Data;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.persistence.Version;
 
@@ -21,4 +23,12 @@ public class User {
 	private String password;
 	private String encryptedPassword;
 	private Boolean enabled = true;
+
+	@OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "user")
+	private Customer customer;
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+		customer.setUser(this);
+	}
 }

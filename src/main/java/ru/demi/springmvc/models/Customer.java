@@ -2,7 +2,6 @@ package ru.demi.springmvc.models;
 
 import lombok.Data;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,6 +27,6 @@ public class Customer {
 	private String state;
 	private String zip;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	private User user;
 }
