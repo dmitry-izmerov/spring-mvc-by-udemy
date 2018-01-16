@@ -1,4 +1,4 @@
-package ru.demi.springmvc.services;
+package ru.demi.springmvc.services.jpa;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,6 +8,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import ru.demi.springmvc.config.JpaIntegrationConfig;
 import ru.demi.springmvc.models.Product;
+import ru.demi.springmvc.services.ProductService;
 
 import java.util.List;
 
