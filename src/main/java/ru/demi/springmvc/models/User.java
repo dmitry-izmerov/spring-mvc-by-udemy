@@ -27,6 +27,9 @@ public class User {
 	@OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "user")
 	private Customer customer;
 
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
+	private Cart cart;
+
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 		customer.setUser(this);
