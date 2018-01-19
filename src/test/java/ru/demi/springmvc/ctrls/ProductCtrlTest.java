@@ -50,7 +50,7 @@ public class ProductCtrlTest {
 		List<Product> products = new ArrayList<>();
 		products.add(new Product());
 		products.add(new Product());
-		when(productService.getAllProducts()).thenReturn(products);
+		when(productService.getAll()).thenReturn(products);
 
 		mockMvc.perform(get("/products"))
 			.andExpect(status().isOk())
@@ -62,7 +62,7 @@ public class ProductCtrlTest {
 	public void getProduct() throws Exception {
 		int productId = 1;
 		Product product = new Product();
-		when(productService.getProductById(productId)).thenReturn(product);
+		when(productService.getById(productId)).thenReturn(product);
 
 		mockMvc.perform(get("/product/1"))
 			.andExpect(status().isOk())
@@ -86,7 +86,7 @@ public class ProductCtrlTest {
 		String imageUrl = "https://some.url";
 
 		Product product = new Product(id, description, price, imageUrl);
-		when(productService.saveProduct(Matchers.any(Product.class))).thenReturn(product);
+		when(productService.save(Matchers.any(Product.class))).thenReturn(product);
 
 		mockMvc.perform(
 			post("/product")
@@ -99,7 +99,7 @@ public class ProductCtrlTest {
 			.andExpect(view().name("redirect:/products"));
 
 		ArgumentCaptor<Product> captor = ArgumentCaptor.forClass(Product.class);
-		verify(productService).saveProduct(captor.capture());
+		verify(productService).save(captor.capture());
 
 		Product captured = captor.getValue();
 		assertEquals(id, captured.getId());
@@ -111,12 +111,12 @@ public class ProductCtrlTest {
 	@Test
 	public void deleteProduct() throws Exception {
 		int productId = 1;
-		doNothing().when(productService).deleteProduct(productId);
+		doNothing().when(productService).delete(productId);
 
 		mockMvc.perform(get("/product/delete/1"))
 			.andExpect(status().is3xxRedirection())
 			.andExpect(view().name("redirect:/products"));
 
-		verify(productService).deleteProduct(productId);
+		verify(productService).delete(productId);
 	}
 }

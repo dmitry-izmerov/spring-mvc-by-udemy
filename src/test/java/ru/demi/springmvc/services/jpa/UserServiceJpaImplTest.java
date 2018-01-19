@@ -83,7 +83,7 @@ public class UserServiceJpaImplTest {
 		Cart cart = new Cart();
 		user.setCart(cart);
 
-		List<Product> products = productService.getAllProducts();
+		List<Product> products = productService.getAll();
 		CartDetail cartDetail1 = new CartDetail();
 		cartDetail1.setProduct(products.get(0));
 		cart.addCartDetail(cartDetail1);
@@ -106,7 +106,7 @@ public class UserServiceJpaImplTest {
 		user.setPassword("pass");
 
 		Cart cart = new Cart();
-		List<Product> products = productService.getAllProducts();
+		List<Product> products = productService.getAll();
 		CartDetail cartDetail1 = new CartDetail();
 		cartDetail1.setProduct(products.get(0));
 		cart.addCartDetail(cartDetail1);

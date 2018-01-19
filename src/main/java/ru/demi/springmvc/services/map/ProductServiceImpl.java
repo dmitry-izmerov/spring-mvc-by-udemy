@@ -43,17 +43,17 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Product> getAllProducts() {
+	public List<Product> getAll() {
 		return new ArrayList<>(products.values());
 	}
 
 	@Override
-	public Product getProductById(Integer id) {
+	public Product getById(Integer id) {
 		return products.get(id);
 	}
 
 	@Override
-	public Product saveProduct(Product product) {
+	public Product save(Product product) {
 		if (Objects.isNull(product)) {
 			throw new RuntimeException("Product shouldn't be null.");
 		}
@@ -71,7 +71,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void deleteProduct(Integer id) {
+	public void delete(Integer id) {
 		products.remove(id);
 	}
 

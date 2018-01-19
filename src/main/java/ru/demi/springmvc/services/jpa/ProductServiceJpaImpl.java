@@ -13,20 +13,20 @@ import java.util.List;
 public class ProductServiceJpaImpl extends AbstractJpaService implements ProductService {
 
 	@Override
-	public List<Product> getAllProducts() {
+	public List<Product> getAll() {
 		return getEntityManager()
 			.createQuery("from Product", Product.class)
 			.getResultList();
 	}
 
 	@Override
-	public Product getProductById(Integer id) {
+	public Product getById(Integer id) {
 		return getEntityManager()
 			.find(Product.class, id);
 	}
 
 	@Override
-	public Product saveProduct(Product product) {
+	public Product save(Product product) {
 		EntityManager entityManager = getEntityManager();
 
 		entityManager.getTransaction().begin();
@@ -37,7 +37,7 @@ public class ProductServiceJpaImpl extends AbstractJpaService implements Product
 	}
 
 	@Override
-	public void deleteProduct(Integer id) {
+	public void delete(Integer id) {
 		EntityManager entityManager = getEntityManager();
 		entityManager.getTransaction().begin();
 		entityManager.remove(entityManager.find(Product.class, id));

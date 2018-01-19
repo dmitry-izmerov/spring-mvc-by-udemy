@@ -24,7 +24,7 @@ public class ProductServiceJpaImplTest {
 
 	@Test
 	public void testGetAllProducts() {
-		List<Product> allProducts = productService.getAllProducts();
+		List<Product> allProducts = productService.getAll();
 
 		assertEquals(3, allProducts.size());
 	}
