@@ -2,6 +2,7 @@ package ru.demi.springmvc.models;
 
 import lombok.Data;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,11 +23,15 @@ public class Customer {
 	private String lastName;
 	private String email;
 	private String phone;
-	private String address;
 	private String city;
 	private String state;
 	private String zip;
 
 	@OneToOne
 	private User user;
+
+	@Embedded
+	private Address billingAddress;
+	@Embedded
+	private Address shippingAddress;
 }
