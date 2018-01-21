@@ -1,25 +1,19 @@
 package ru.demi.springmvc.models;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Version;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @Entity
-public class Cart {
-	@Id
-	@GeneratedValue
-	private Integer id;
-	@Version
-	private Integer version;
+public class Cart extends AbstractEntity {
 	@OneToOne
 	private User user;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cart", orphanRemoval = true)

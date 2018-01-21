@@ -1,26 +1,22 @@
 package ru.demi.springmvc.models.security;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import ru.demi.springmvc.models.AbstractEntity;
 import ru.demi.springmvc.models.User;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.Version;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @Entity
-public class Role {
-	@Id
-	@GeneratedValue
-	private Integer id;
-	@Version
-	private Integer version;
+public class Role extends AbstractEntity {
+
 	private String role;
 
 	@JoinTable(
