@@ -1,10 +1,13 @@
 #logging:
 #  level:
+#    root: DEBUG
 #    org.hibernate: DEBUG
 spring:
   jpa:
     hibernate:
       ddl-auto: create
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl
     show-sql: true
   datasource:
     username: sa # it was added for fix generation table for entity
